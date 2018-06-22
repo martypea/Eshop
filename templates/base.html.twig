@@ -2,11 +2,44 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="{{ asset('img/logo.png') }}">
+        
+        <title>{% block title %}Compee{% endblock %}</title>
+        
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/ext.css') }}" rel="stylesheet">
+        
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    
+      <div class="container border-bottom">
+        <div class="row">
+        {% block navbar %}{% include 'navigation/admin_nav.html.twig' %}{% endblock %}
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+        <div class="col-9">{% block adminbody %}{% endblock %}</div>
+        </div>
+      </div>
+      <footer class="container">
+        <p>copyright &copy; 2018 maarty. All Rights Reserved.</p>
+      </footer>
+
+      <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script>
+    window.jQuery || document.write('<script src=" {{ asset('js/jquery-slim.min.js')}}"><\/script>')
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="{{ asset('js/popper.min.js')}}"></script>
+  <script src="{{ asset('js/bootstrap.bundle.js')}}"></script>
+  <script src="{{ asset('js/ext.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <script>{% block javascript %}{% endblock %}</script>
+   </body>
 </html>

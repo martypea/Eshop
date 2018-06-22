@@ -1,0 +1,35 @@
+{% block navbar %}
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #e3f2fd;">
+  <a class="navbar-brand" href="{{ path('startpage') }}"><img src="{{ asset('img/logo.png') }}" height="50" width="50" alt="Compee logo"><strong>Compee</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+          
+   <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="dropdown nav-item {% if app.request.attributes.get('_route') == 'product' %}active{% endif %}">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Products</a> 
+        <div class="dropdown-menu" aria-labelledby="dropdown01"">
+          {% for item in product_categories %}
+          <a class="dropdown-item" href="#">{{ item.name }}</a>
+          {% endfor %}
+        </div>
+      </li>
+      <li class="nav-item {% if app.request.attributes.get('_route') == 'contact' %}active{% endif %}">
+        <a class="nav-link" href="#">Contact</a>
+      </li>
+      <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %}active{% endif %}">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <span class="navbar-text">
+       Buy the best products on market with us!
+    </span>
+   </div>
+</nav>
+        
+<nav class="navbar navbar-expand-md static-top" id="jumbo">
+<img src="{{ asset('img/jumbo_picture.jpg') }}" class="img-fluid">
+</nav>
+ {% endblock %}

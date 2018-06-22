@@ -1,0 +1,35 @@
+{% block navbar %}
+
+<div class="col-3">
+<nav class="nav">
+<a class="navbar-brand" href="{{ path('startpage') }}"><img src="{{ asset('img/logo.png') }}" height="50" width="50" alt="Compee logo"><strong>Compee</strong></a>
+<div class="text-nowrap bd-highlight w-auto p-3" style="width: 8rem;"><em>Administration</em></div>
+<ul class="nav flex-column p-3 mx-auto bg-light text-dark rounded">
+  <li class="nav-item d-flex justify-content-between align-items-center {% if app.request.attributes.get('_route') == 'adminpage' %}active{% endif %}">
+    <a class="nav-link" href="{{ path('adminpage') }}">Dashboard</a>
+  </li>
+  <li class="nav-item d-flex justify-content-between align-items-center">
+    <a class="nav-link" href="#">Products</a>
+    <span class="badge badge-primary badge-pill">14</span>
+  </li>
+  <li class="nav-item d-flex justify-content-between align-items-center">
+    <a class="nav-link" href="#">Orders</a>
+    <span class="badge badge-primary badge-pill">200</span>
+  </li>
+  <li class="nav-item d-flex justify-content-between align-items-center {% if app.request.attributes.get('_route') starts with 'product_category' %}active{% endif %}">
+    <a class="nav-link" href="{{ path('product_category_index')}}">Product Categories</a>
+    <span class="badge badge-primary badge-pill">{{ product_categories|length }}</span>
+  </li>
+  <ul class="nav flex-column">
+      <li class="nav-item">
+      <a class="nav-link" href="{{ path('product_category_new') }}">Create new Category</a>
+      </li>
+    </ul>
+  <li class="nav-item d-flex justify-content-between align-items-center">
+    <a class="nav-link" href="#">Product Tags</a>
+    <span class="badge badge-primary badge-pill">9</span>
+  </li>
+</ul>
+</nav>
+</div>
+{% endblock %}

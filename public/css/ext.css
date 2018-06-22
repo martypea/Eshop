@@ -1,0 +1,26 @@
+body{
+  padding-top: 5rem;
+}
+
+#jumbo {
+  height: 12rem;
+  border-left, border-right: 0;
+  margin-left:-8rem;
+  margin-right:-8rem;
+  margin-top: -3rem;
+  overflow: hidden;
+}
+
+.navbar-light .navbar-nav .active > .nav-link {
+  color: orange;
+  font-weight: bold;
+}
+
+.nav-item.active a{
+  color: orange;
+}
+
+.navbar-brand {
+  font-size: 1.75rem;
+}
+

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block adminbody %}
+    <h3>Product Categories</h3>
+    <br>
+
+    <table class="table table-borderless table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product_category in product_categories %}
+            <tr>
+                <td>{{ product_category.id }}</td>
+                <td>{{ product_category.name }}</td>
+                <td>{{ product_category.description }}</td>
+                <td>
+                <div class="btn-toolbar" role="toolbar">
+                <div class="btn-group mr-2" role="group">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                      <a class="text-white" href="{{ path('product_category_show', {'id': product_category.id}) }}">Show</a>
+                    </button>
+                    <button type="button" class="btn btn-secondary btn-sm">
+                    <a class="text-white" href="{{ path('product_category_edit', {'id': product_category.id}) }}">Edit</a>
+                    </button>
+                    </div>
+                    <div class="btn-group" role="group">
+                    {{ include('product_category/_delete_form.html.twig') }}
+                    </div>
+                </div> 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
