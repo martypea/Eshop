@@ -1,6 +1,8 @@
 {{ form_start(form) }}
-
-<div class="form-group">
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    
+    <div class="form-group">
     <label>{{ form_label(form.name) }}</label>
     {{ form_widget(form.name, {'attr': {'class':'form-control'}}) }}
  </div>
@@ -14,11 +16,8 @@
   </div>
   <div class="btn-group mr-2" role="group"> 
     <button type="button" class="btn btn-secondary btn-sm" id="button-back">
-          <a class="text-white" href="{{ path('product_category_index') }}">Back</a>
+          <a class="text-white" href="{{ path('product_index') }}">Back</a>
     </button>
   </div>
  </div>
-
-
 {{ form_end(form) }}
-

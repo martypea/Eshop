@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProductCategoryRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ProductTagRepository")
  */
-class ProductCategory
+class ProductTag
 {
     /**
      * @ORM\Id()
@@ -29,7 +29,7 @@ class ProductCategory
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="category")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Product", mappedBy="tag")
      */
     private $products;
   
@@ -80,7 +80,7 @@ class ProductCategory
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategory($this);
+            $product->addTag($this);
         }
 
         return $this;
@@ -90,12 +90,10 @@ class ProductCategory
     {
         if ($this->products->contains($product)) {
             $this->products->removeElement($product);
-            // set the owning side to null (unless already changed)
-            if ($product->getCategory() === $this) {
-                $product->setCategory(null);
-            }
+            $product->removeTag($this);
         }
 
         return $this;
     }
+    
 }

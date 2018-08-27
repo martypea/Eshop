@@ -16,21 +16,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProductCategoryController extends Controller
 {
     /**
-     * @Route("/", name="product_category_index", methods="GET")
+     * @Route("/", name="product_category_index", methods="GET|POST")
      */
-    public function index(ProductCategoryRepository $productCategoryRepository): Response
+    public function index(Request $request, ProductCategoryRepository $productCategoryRepository): Response
     {
-        return $this->render('product_category/index.html.twig',[
-            'product_categories' => $productCategoryRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="product_category_new", methods="GET|POST")
-     */
-    public function new(Request $request, ProductCategoryRepository $productCategoryRepository): Response
-    {
-        $productCategory = new ProductCategory();
+      $productCategory = new ProductCategory();
         $form = $this->createForm(ProductCategoryType::class, $productCategory);
         $form->handleRequest($request);
 
@@ -41,22 +31,12 @@ class ProductCategoryController extends Controller
 
             return $this->redirectToRoute('product_category_index');
         }
-
-        return $this->render('product_category/new.html.twig', [
+      
+        return $this->render('product_category/index.html.twig',[
             'product_category' => $productCategory,
             'form' => $form->createView(),
             'product_categories' => $productCategoryRepository->findAll(),
-        ]);
-    }
 
-    /**
-     * @Route("/{id}", name="product_category_show", methods="GET")
-     */
-    public function show(ProductCategory $productCategory, ProductCategoryRepository $productCategoryRepository): Response
-    {
-        return $this->render('product_category/show.html.twig', [
-             'product_category' => $productCategory,
-            'product_categories' => $productCategoryRepository->findAll(),
         ]);
     }
 

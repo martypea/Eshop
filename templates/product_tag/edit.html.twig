@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block adminbody %}
+    <h3>Product Tags</h3>
+    <br>
+    <h5>Edit tag</h5>
+    <br>
+
+      {{ include('product_tag/_form.html.twig', {'button_label': 'Update'}) }}
+
+{% endblock %}

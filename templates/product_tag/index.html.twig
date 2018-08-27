@@ -7,13 +7,13 @@ document.getElementById("button-back").style.visibility = "hidden";
 
 
 {% block adminbody %}
-    <h3>Product Categories</h3>
+    <h3>Product Tags</h3>
     <br>
-    <h5>Create new category</h5>
+    <h5>Create new tag</h5>
     <br>
-      {{ include('product_category/_form.html.twig') }}
+      {{ include('product_tag/_form.html.twig') }}
     <br>
-    <h5>List of categories</h5>
+    <h5>List of tags</h5>
     <br>
     <table class="table table-borderless table-sm">
         <thead>
@@ -21,24 +21,24 @@ document.getElementById("button-back").style.visibility = "hidden";
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
-                <th scope="col">Actions</th>
+                <th scope="col">actions</th>
             </tr>
         </thead>
         <tbody>
-        {% for product_category in product_categories %}
+        {% for product_tag in product_tags %}
             <tr>
-                <td>{{ product_category.id }}</td>
-                <td>{{ product_category.name }}</td>
-                <td>{{ product_category.description }}</td>
+                <td>{{ product_tag.id }}</td>
+                <td>{{ product_tag.name }}</td>
+                <td>{{ product_tag.description }}</td>
                 <td>
                 <div class="btn-toolbar" role="toolbar">
-                    <div class="btn-group mr-2" role="group"> 
+                <div class="btn-group mr-2" role="group"> 
                     <button type="button" class="btn btn-secondary btn-sm">
-                    <a class="text-white" href="{{ path('product_category_edit', {'id': product_category.id}) }}">Edit</a>
+                    <a class="text-white" href="{{ path( 'product_tag_edit' , {'id': product_tag.id}) }}">Edit</a>
                     </button>
                     </div>
                     <div class="btn-group" role="group">
-                    {{ include('product_category/_delete_form.html.twig') }}
+                    {{ include('product_tag/_delete_form.html.twig') }}
                     </div>
                 </div> 
                 </td>

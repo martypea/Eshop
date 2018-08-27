@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block adminbody %}
-    <h1>Edit Product Category</h1>
+    <h3>Product Categories</h3>
+    <br>
+    <h5>Edit category</h5>
+    <br>
 
-    {{ include('product_category/_form.html.twig', {'button_label': 'Update'}) }}
+      {{ include('product_category/_form.html.twig', {'button_label': 'Update'}) }}
 
 {% endblock %}
